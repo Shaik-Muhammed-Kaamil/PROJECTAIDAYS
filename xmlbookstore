@@ -1,0 +1,80 @@
+Bookstore.xml
+<?xml version="1.0"?>
+<?xml-stylesheet type="text/xsl" href="bookstore.xsl"?>
+<bookstore> <book>
+<title>Everyday Italian</title> <author>Giada De Laurentiis</author> <year>2005</year> <price>30.00</price>
+</book> <book>
+<title>Harry Potter</title> <author>J K. Rowling</author> <year>2005</year> <price>29.99</price>
+</book> <book>
+<title>Learning XML</title> <author>Erik T. Ray</author> <year>2003</year> <price>39.95</price>
+</book> </bookstore>
+
+
+
+
+
+
+Bookstore.xsl
+<xsl:stylesheet version="1.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform"> <xsl:template match="/">
+<html>
+<body>
+<h2> My Books collection</h2> <table border="1">
+<tr bgcolor="red">
+<th align="left">title</th>
+<th align="left">author</th>
+</tr>
+<xsl:for-each select="bookstore/book"> <tr>
+<td><xsl:value-of select="title"/></td>
+<xsl:choose>
+<xsl:when test="price &gt; 30">
+<td bgcolor="yellow"><xsl:value-of select="author"/></td> </xsl:when>
+<xsl:when test="price &gt; 10">
+<td bgcolor="magneta"><xsl:value-of select="author"/></td> </xsl:when>
+<xsl:otherwise>
+<td><xsl:value-of select="author"/></td>
+</xsl:otherwise> </xsl:choose> </tr> </xsl:for-each> </table> </body>
+</html> </xsl:template> </xsl:stylesheet>
+
+
+
+
+
+
+
+Bookstore.xsd
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema elementFormDefault="qualified" attributeFormDefault="unqualified" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+<xs:element name="bookstore">
+<xs:complexType>
+<xs:sequence>
+<xs:element name="book" maxOccurs="unbounded">
+<xs:complexType> <xs:sequence>
+<xs:element name="title" type="xs:string"></xs:element>
+<xs:element name="author" type="xs:string"></xs:element>
+<xs:element name="ISBN" type="xs:string"></xs:element>
+<xs:element name="publisher" type="xs:string"></xs:element>
+<xs:element name="edition"  type="xs:int"></xs:element>
+<xs:element name="price" type="xs:decimal"></xs:element>
+</xs:sequence> 
+</xs:complexType>
+</xs:element>
+</xs:sequence> 
+</xs:complexType>
+</xs:element> 
+</xs:schema>
+
+
+
+
+
+
+Bookstore.dtd
+<?xml version="1.0" encoding="UTF-8"?>
+<!ELEMENT bookstore (book+)>
+<!ELEMENT book (title,author,ISBN,publisher,edition,price)> <!ELEMENT title (#PCDATA)>
+<!ELEMENT author (#PCDATA)>
+<!ELEMENT ISBN (#PCDATA)>
+<!ELEMENT publisher (#PCDATA)>
+<!ELEMENT edition (#PCDATA)>
+<!ELEMENT price (#PCDATA)>
+
