@@ -1,121 +1,59 @@
-// src/App.js
-import React from 'react';
-import { BrowserRouter as Router, Route, Routes } from 'react-router-dom'; import Home from './components/Home';
-import Registration from './components/Registration'; import Login from './components/Login';
-import Contact from './components/Contact'; import About from './components/About';
-function App() { return (
-<Router>
-<div>
+const express = require('express');
+const bodyParser = require('body-parser');
+const app = express(); const port = 3000;
+
+// Middleware to parse JSON bodies app.use(bodyParser.json());
+
+// Example student data (replace with database or file storage in real scenario) let students = [
+{ id: 1, name: 'Kasyapa', age: 34 },
+{ id: 2, name: 'MSBK', age: 33 }
+];
+
+// Routes for CRUD operations
+// Get all students app.get('/students', (req, res) => {
+res.json(students);
+});
+
+// Get a student by ID app.get('/students/:id', (req, res) => {
+const student = students.find(s => s.id === parseInt(req.params.id)); if (!student) return res.status(404).send('Student not found.'); res.json(student);
+});
+
+// Add a new student app.post('/students', (req, res) => {
+const student = {
+id: students.length + 1, name: req.body.name, age: req.body.age
  
-<Routes>
-<Route exact path="/" element={<Home />} />
-<Route path="/registration" element={<Registration />} />
-<Route path="/login" element={<Login />} />
-<Route path="/contact" element={<Contact />} />
-<Route path="/about" element={<About />} />
-</Routes>
-</div>
-</Router>
-);
-}
 
-export default App;
 
-src/components/Home.js
-// src/components/Home.js import React from 'react';
 
-const Home = () => { return (
-<div>
-<h2>Welcome to the Student Management System</h2>
-<p>Please navigate through the pages using the links.</p>
-</div>
-);
-};
-
-export default Home;
-
-src/components/Registration.js
-// src/components/Registration.js import React from 'react';
-
-const Registration = () => { return (
-<div>
-<h2>Registration Page</h2>
-<form>
-<div>
-<label>Name:</label>
-<input type="text" name="name" />
-</div>
-<div>
-<label>Email:</label>
-<input type="email" name="email" />
-</div>
-<div>
-<label>Password:</label>
-<input type="password" name="password" />
-</div>
-<button type="submit">Register</button>
-</form>
-</div>
-);
-};
-export default Registration;
+});
  
-src/components/Login.js
-// src/components/Login.js import React from 'react';
-const Login = () => { return (
-<div>
-<h2>Login Page</h2>
-<form>
-<div>
-<label>Email:</label>
-<input type="email" name="email" />
-</div>
-<div>
-<label>Password:</label>
-<input type="password" name="password" />
-</div>
-<button type="submit">Login</button>
-</form>
-</div>
-);
 };
-
-export default Login;
-
-src/components/Contact.js
-// src/components/Contact.js import React from 'react';
-const Contact = () => { return (
-<div>
-<h2>Contact Page</h2>
-<form>
-<div>
-<label>Name:</label>
-<input type="text" name="name" />
-</div>
-<div>
-<label>Email:</label>
-<input type="email" name="email" />
-</div>
-<div>
-<label>Message:</label>
-<textarea name="message"></textarea>
-</div>
-<button type="submit">Send</button>
-</form>
-</div>
-);
-};
-
-export default Contact;
+students.push(student); res.json(student);
  
-src/components/About.js
-// src/components/About.js import React from 'react';
-const About = () => { return (
-<div>
-<h2>About Page</h2>
-<p>This application is designed to manage student information effectively.</p>
-</div>
-);
-};
 
-export default About;
+// Update an existing student app.put('/students/:id', (req, res) => {
+const student = students.find(s => s.id === parseInt(req.params.id)); if (!student) return res.status(404).send('Student not found.');
+
+ 
+
+
+
+});
+ 
+student.name = req.body.name; student.age = req.body.age; res.json(student);
+ 
+// Delete a student app.delete('/students/:id', (req, res) => {
+const	studentIndex	=	students.findIndex(s	=>	s.id	=== parseInt(req.params.id));
+ 
+if (studentIndex === -1) return res.status(404).send('Student not found.');
+
+ 
+
+
+});
+ 
+students.splice(studentIndex, 1); res.send('Student deleted successfully.');
+ 
+// Start the server app.listen(port, () => {
+console.log(`Server running at http://localhost:${port}`);
+});
