@@ -1,0 +1,41 @@
+//index.js
+const http = require("http")
+const server =  http.createServer((req, res) => {
+res.write("This is the response from my server")
+
+
+res.end();
+
+
+})
+server.listen((3000) , () => {
+    console.log("hello thaliva your server is running ");
+
+
+})  
+
+//a.js
+const os=require('os');
+console.log("CPU Architecture: "+os.arch());
+console.log("free memory:"+os.freemem());
+console.log("total memory:"+os.totalmem());
+console.log('list of network interface:'+os.networkInterfaces());
+console.log('os default directory for temp files:'+os.tmpdir());
+
+//mouseevt
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <p id="demo">Click me</p>
+    <script>document.getElementById("demo").addEventListener("click",myFunction);
+    function myFunction()
+    {
+        document.getElementById("demo").innerHTML="You clicked me";}
+        </script>
+</body>
+</html>
