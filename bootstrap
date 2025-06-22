@@ -1,0 +1,102 @@
+//login
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Login</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+
+  <div class="container mt-5">
+    <h2 class="text-center">Login</h2>
+    <form class="mx-auto" style="max-width: 400px;">
+      <div class="mb-3">
+        <input type="email" class="form-control" placeholder="Email">
+      </div>
+      <div class="mb-3">
+        <input type="password" class="form-control" placeholder="Password">
+      </div>
+      <button class="btn btn-primary w-100">Login</button>
+    </form>
+    <div class="text-center mt-3">
+      <a href="rboot.html">Go to Register</a> |
+      <a href="cboot.html">Go to Catalog</a>
+    </div>
+  </div>
+
+</body>
+</html>
+//register
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Register</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+
+  <div class="container mt-5">
+    <h2 class="text-center">Register</h2>
+    <form class="mx-auto" style="max-width: 400px;">
+      <div class="mb-3">
+        <input type="text" class="form-control" placeholder="Name">
+      </div>
+      <div class="mb-3">
+        <input type="email" class="form-control" placeholder="Email">
+      </div>
+      <div class="mb-3">
+        <input type="password" class="form-control" placeholder="Password">
+      </div>
+      <button class="btn btn-success w-100">Register</button>
+    </form>
+    <div class="text-center mt-3">
+      <a href="lboot.html">Go to Login</a> |
+      <a href="cboot.html">Go to Catalog</a>
+    </div>
+  </div>
+
+</body>
+</html>
+//catalog
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Catalog</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+
+  <div class="container mt-5">
+    <h2 class="text-center mb-4">Product Catalog</h2>
+    <div class="row g-3">
+      <div class="col-6 col-md-4">
+        <div class="border p-3 text-center">
+          <p>Product 1</p>
+          <p>$10</p>
+          <button class="btn btn-primary">Add</button>
+        </div>
+      </div>
+      <div class="col-6 col-md-4">
+        <div class="border p-3 text-center">
+          <p>Product 2</p>
+          <p>$20</p>
+          <button class="btn btn-primary">Add</button>
+        </div>
+      </div>
+      <div class="col-6 col-md-4">
+        <div class="border p-3 text-center">
+          <p>Product 3</p>
+          <p>$30</p>
+          <button class="btn btn-primary">Add</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="text-center mt-4">
+      <a href="lboot.html">Go to Login</a> |
+      <a href="rboot.html">Go to Register</a>
+    </div>
+  </div>
+
+</body>
+</html>
