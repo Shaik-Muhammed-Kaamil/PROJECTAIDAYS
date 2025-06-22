@@ -1,3 +1,7 @@
+//npm install express,npx create-react-app todo
+//change path
+//npm start
+//app.js replace
 import React, { useState } from 'react';
 function TodoApp() {
   const [tasks, setTasks] = useState([]);
