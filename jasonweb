@@ -1,3 +1,5 @@
+//npm install express dotenv jsonwebtoken
+//index.js
 const express = require('express');
 const dotenv = require('dotenv');
 const jwt = require('jsonwebtoken');
@@ -52,3 +54,4 @@ app.get("/user/validateToken", (req, res) => {
         return res.status(401).send(error);
     }
 });
+//http:localhost:5000 user generateToken validateToken
