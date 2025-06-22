@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Login</title>
+  <style>
+    .form {
+      display: flex;
+      flex-direction: column;
+      width: 300px;
+      margin: 20px auto;
+    }
+    input, button {
+      margin: 5px 0;
+      padding: 8px;
+    }
+  </style>
+</head>
+<body>
+
+  <h2 style="text-align:center;">Login Page</h2>
+
+  <form class="form">
+    <input type="text" placeholder="Email">
+    <input type="password" placeholder="Password">
+    <button>Login</button>
+  </form>
+
+  <p style="text-align:center;">
+    <a href="register.html">Go to Register</a> |
+    <a href="catalog.html">Go to Catalog</a>
+  </p>
+
+</body>
+</html>
+//register
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Register</title>
+  <style>
+    .form {
+      display: flex;
+      flex-direction: column;
+      width: 300px;
+      margin: 20px auto;
+    }
+    input, button {
+      margin: 5px 0;
+      padding: 8px;
+    }
+  </style>
+</head>
+<body>
+
+  <h2 style="text-align:center;">Register Page</h2>
+
+  <form class="form">
+    <input type="text" placeholder="Name">
+    <input type="text" placeholder="Email">
+    <input type="password" placeholder="Password">
+    <button>Register</button>
+  </form>
+
+  <p style="text-align:center;">
+    <a href="login.html">Go to Login</a> |
+    <a href="catalog.html">Go to Catalog</a>
+  </p>
+
+</body>
+</html>
+//catalog
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Catalog</title>
+  <style>
+    .catalog {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 10px;
+      max-width: 600px;
+      margin: 20px auto;
+    }
+    .item {
+      border: 1px solid #000;
+      padding: 10px;
+      text-align: center;
+    }
+  </style>
+</head>
+<body>
+
+  <h2 style="text-align:center;">Product Catalog</h2>
+
+  <div class="catalog">
+    <div class="item">
+      <p>Product 1</p>
+      <p>$10</p>
+      <button>Add</button>
+    </div>
+    <div class="item">
+      <p>Product 2</p>
+      <p>$20</p>
+      <button>Add</button>
+    </div>
+    <div class="item">
+      <p>Product 3</p>
+      <p>$30</p>
+      <button>Add</button>
+    </div>
+    <div class="item">
+      <p>Product 4</p>
+      <p>$40</p>
+      <button>Add</button>
+    </div>
+  </div>
+
+  <p style="text-align:center;">
+    <a href="login.html">Go to Login</a> |
+    <a href="register.html">Go to Register</a>
+  </p>
+
+</body>
+</html>
