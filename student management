@@ -2,60 +2,63 @@
 //app.js
 const express = require('express');
 const bodyParser = require('body-parser');
-const app = express(); const port = 3000;
+const app = express();
+const port = 3000;
 
-// Middleware to parse JSON bodies app.use(bodyParser.json());
+// Middleware to parse JSON bodies
+app.use(bodyParser.json());
 
-// Example student data (replace with database or file storage in real scenario) let students = [
-{ id: 1, name: 'Kasyapa', age: 34 },
-{ id: 2, name: 'MSBK', age: 33 }
+// Example student data (replace with database or file storage in real scenario)
+let students = [
+  { id: 1, name: 'Kasyapa', age: 34 },
+  { id: 2, name: 'MSBK', age: 33 }
 ];
 
 // Routes for CRUD operations
-// Get all students app.get('/students', (req, res) => {
-res.json(students);
+
+// Get all students
+app.get('/students', (req, res) => {
+  res.json(students);
 });
 
-// Get a student by ID app.get('/students/:id', (req, res) => {
-const student = students.find(s => s.id === parseInt(req.params.id)); if (!student) return res.status(404).send('Student not found.'); res.json(student);
+// Get a student by ID
+app.get('/students/:id', (req, res) => {
+  const student = students.find(s => s.id === parseInt(req.params.id));
+  if (!student) return res.status(404).send('Student not found.');
+  res.json(student);
 });
 
-// Add a new student app.post('/students', (req, res) => {
-const student = {
-id: students.length + 1, name: req.body.name, age: req.body.age
- 
-
-
-
+// Add a new student
+app.post('/students', (req, res) => {
+  const student = {
+    id: students.length + 1,
+    name: req.body.name,
+    age: req.body.age
+  };
+  students.push(student);
+  res.json(student);
 });
- 
-};
-students.push(student); res.json(student);
- 
 
-// Update an existing student app.put('/students/:id', (req, res) => {
-const student = students.find(s => s.id === parseInt(req.params.id)); if (!student) return res.status(404).send('Student not found.');
+// Update an existing student
+app.put('/students/:id', (req, res) => {
+  const student = students.find(s => s.id === parseInt(req.params.id));
+  if (!student) return res.status(404).send('Student not found.');
 
- 
-
-
-
+  student.name = req.body.name;
+  student.age = req.body.age;
+  res.json(student);
 });
- 
-student.name = req.body.name; student.age = req.body.age; res.json(student);
- 
-// Delete a student app.delete('/students/:id', (req, res) => {
-const	studentIndex	=	students.findIndex(s	=>	s.id	=== parseInt(req.params.id));
- 
-if (studentIndex === -1) return res.status(404).send('Student not found.');
 
- 
+// Delete a student
+app.delete('/students/:id', (req, res) => {
+  const studentIndex = students.findIndex(s => s.id === parseInt(req.params.id));
+  if (studentIndex === -1) return res.status(404).send('Student not found.');
 
-
+  students.splice(studentIndex, 1);
+  res.send('Student deleted successfully.');
 });
- 
-students.splice(studentIndex, 1); res.send('Student deleted successfully.');
- 
-// Start the server app.listen(port, () => {
-console.log(`Server running at http://localhost:${port}`);
+
+// Start the server
+app.listen(port, () => {
+  console.log(`Server running at http://localhost:${port}`);
 });
